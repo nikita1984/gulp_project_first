@@ -1,0 +1,232 @@
+.header
+    padding-top: 3.6rem
+    height:  142.3rem
+    background-image: url('../images/header__image_mobile.jpg')
+    background-repeat: no-repeat, no-repeat
+    background-size: cover
+    display: flex
+    align-items: center
+    flex-direction: column
+    position: relative
+    color: #FFFFFF
+    text-align: center
+    &:after 
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background: rgba(66, 25, 109, 0.8)
+        z-index: 2
+        @media screen and (min-width: $desctop_medium)
+            background: rgba(50, 11, 97, 0.8)
+    // & > section  
+    @media screen and (min-width: $tablet_small)
+        background-image: url('../images/header__image_tablet.jpg')    
+    @media screen and (min-width: $desctop_medium)
+        height:  86rem
+        background-image: url('../images/header__image_desctop.jpg') 
+
+.header__topSection
+    @extend %header__sections_widthAndZIndex
+    display: flex
+    align-items: center
+    flex-direction: column
+    @media screen and (min-width: $desctop_medium)
+        flex-direction: row
+        width: 920px
+        height: 68px
+
+.header__logoBlock 
+    width: 5.2rem
+    margin-bottom: 2.4rem
+    @media screen and (min-width: $desctop_medium)
+        width: 68px
+        height: 100%
+        margin-right: 15px
+        margin-bottom: 0
+        & > img
+            width: auto
+.header__h6
+    @media screen and (max-width: $tablet_small - 1)
+        font-size: 1.5rem        
+    @media screen and (min-width: $tablet_small) and (max-width: $desctop_medium - 1)
+        margin-top: 1.6rem
+    @media screen and (min-width: $tablet_small)    
+        font-size: 2.0rem
+
+.header__bottomSection
+    @extend %header__sections_widthAndZIndex
+    position: relative
+    padding-top: 37px
+    @media screen and (min-width: $tablet_small)
+        width: 76%
+        padding-top: 5.1rem
+    @media screen and (min-width: $desctop_medium)
+        width: 100%
+        padding-top: 36px 
+        display: flex
+        flex-direction: column
+        align-items: center   
+        
+.header__h1
+    font-family: $bootstrapDefaultFonts
+    @media screen and (min-width: $desctop_medium)
+        font-size: 4.8rem
+        
+.header__hr
+    margin: 2.6rem auto
+    @media screen and (min-width: $tablet_small)
+        margin-top: 38px
+    @media screen and (min-width: $desctop_medium)
+        margin-top: 24px
+
+.header__h4
+    @media screen and (max-width: $tablet_small - 1)
+        font-size: 2.1rem
+    @media screen and (min-width: $desctop_medium)
+        word-spacing: 0.3rem
+.header__h4-br
+    @media screen and (max-width: $desctop_medium - 1)
+        display: none
+
+.header__blanksArea
+    margin: 3.9rem auto
+    @media screen and (min-width: $desctop_medium)
+        width: 965px
+        margin: -0.9rem auto
+
+.header__blank
+    width: 320px
+    @media screen and (min-width: $tablet_small)
+        width: 269px
+    @media screen and (min-width: $desctop_medium)
+        width: 285px   
+
+.header__timeAndPlace
+    display: flex
+    align-items: center
+    @media screen and (max-width: $mobile_small)
+        margin-left: 10px
+    @media screen and (min-width: $tablet_small)    
+        padding-left: 3%
+        margin-top: 80px
+    @media screen and (min-width: $desctop_medium)
+        padding-left: 0
+        width: 54%
+        margin-top: 43px
+.header__timeAndPlace-iconBlock
+    width: 10%
+    @media screen and (min-width: $tablet_small)
+        width: 5%
+.header__timeAndPlace-article
+    text-align: left
+    margin-left: 4%
+    width: 86%
+    @media screen and (min-width: $tablet_small)
+        margin-left: 3%
+        width: 100%
+.header__timeAndPlace-h5
+    @media screen and (min-width: $desctop_medium)
+        word-spacing: 0.1rem        
+.header__timeAndPlace-br
+    @media screen and (min-width: $tablet_small)
+        display: none        
+
+.header__form
+    margin: 4rem 0
+    padding: 0 20px
+    @media screen and (min-width: $tablet_small)
+        margin-top: 65px
+        padding: 0
+    @media screen and (min-width: $desctop_medium)
+        margin-top: 52px
+        margin-bottom: 47px         
+.header__form-topBlock
+    $unit: 1px
+    @media screen and (min-width: $tablet_small)
+        display: flex
+        justify-content: space-between
+    @media screen and (min-width: $desctop_medium)
+        width: calc(254 + 254 + 30) * $unit 
+.header__form-input
+    @media screen and (min-width: $tablet_small)
+        width: 270px
+        padding: 0 
+    @media screen and (min-width: $desctop_medium)
+        width: 254px     
+.header__form-button
+    margin: 
+        top: 2.6rem
+        bottom: 1rem
+    @media screen and (min-width: $tablet_small)
+        width: 270px
+        margin-top: 0
+    @media screen and (min-width: $desctop_medium)
+        width: 254px     
+.header__form-p
+    font-family: $bootstrapDefaultFonts
+    font-size: 1.2rem
+    @media screen and (min-width: $tablet_small)
+        font-family: $bootstrapDefaultFonts
+        margin-top: 33px
+        letter-spacing: 0.2rem
+    @media screen and (min-width: $desctop_medium)
+        margin-top: 19px      
+
+.header__offer
+    display: flex
+    justify-content: space-between
+    align-items: center
+    @media screen and (max-width: $mobile_small)
+        margin-left: 10px
+    @media screen and (min-width: $tablet_small)
+        margin-top: 50px 
+        margin-left: 5%
+    @media screen and (min-width: $desctop_medium)
+        width: 45%
+        margin: 0          
+.header__offer-article
+    width: 75%
+    @media screen and (min-width: $tablet_small) 
+        width: 87.5%
+    @media screen and (min-width: $desctop_medium)
+        margin-left: 7%    
+.header__offer-text
+    font-size: 1.4rem
+    text-align: left
+    margin: unset
+    @media screen and (min-width: $tablet_small)            
+        font-size: 1.6rem
+        line-height: 1.9rem
+        letter-spacing: 0.18rem
+    @media screen and (min-width: $desctop_medium)
+        font-size: 1.6rem
+        line-height: 2.1rem
+        letter-spacing: 0.1rem
+        text-align: center   
+.header__offer-br
+    @media screen and (max-width: $tablet_small - 1)
+        display: none        
+
+.header__mystic-constellation-1
+    display: none
+    @media screen and (min-width: $tablet_small)
+        display: block 
+        position: absolute
+        top: 513px
+        left: -52px
+    @media screen and (min-width: $desctop_medium)
+        top: 407px
+        left: 23px 
+    @media screen and (min-width: $desctop_large_2)
+        left: 21px       
+
+.header__mystic-constellation-2
+    display: none
+    @media screen and (min-width: $desctop_medium)
+        display: block 
+        position: absolute 
+        top: 75%
+        left: 86%   

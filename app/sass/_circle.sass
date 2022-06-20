@@ -1,0 +1,11 @@
+.circle
+    $side: 44
+    width: $side * 1px
+    height: $side * 1px
+    background-color: #FAD264
+    border-radius: 50px
+    &__star
+        $width: calc(25.84 * 100 / $side)
+        width: $width * 1%
+        height: calc(24.44 * 100 / $side * 1%)
+        margin-top: calc((100 - $width) / 2 * 1%)

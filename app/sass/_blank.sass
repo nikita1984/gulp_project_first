@@ -1,0 +1,27 @@
+.blank
+    display: flex
+    flex-direction: column
+.blank__inner
+    height: 11.8rem
+    width: 100%
+    border-radius: 30px
+    background: rgba(255, 255, 255, 0.8)
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25)
+    color: #000000
+    display: flex
+    align-items: center
+    padding: 0 7%
+    @media screen and (min-width: $tablet_small)
+        height: 14.5rem
+        // padding: 0 auto
+    @media screen and (min-width: $desctop_medium)
+        height: 12.5rem    
+.blank__h6
+    font-size: 1.6rem
+    line-height: 1.9rem
+    @media screen and (min-width: $desctop_medium)
+        font-size: 1.8rem
+.blank__circle
+    align-self: center
+    position: relative
+    top: 22px

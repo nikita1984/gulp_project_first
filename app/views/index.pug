@@ -1,0 +1,88 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    title= "esoteric_one"
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(content='true' name='HandheldFriendly')
+    meta(content='width' name='MobileOptimized')
+    meta(content='yes' name='apple-mobile-web-app-capable')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(rel="stylesheet" href="css/style.css" type = "text/css")
+  body
+    div#root
+      header.header
+        section.header__topSection
+          div.header__logoBlock
+            img(src="./images/logo.png" alt="logo.png")
+          h6.h6.header__h6.
+            Практический марафон, основанный на&nbsp;синтезе нумерологии, 
+            практической психологии и&nbsp;работы с&nbsp;бессознательным от&nbsp;эксперта 
+            в&nbsp;области трансперсональной психологии и&nbsp;известного 
+            нумеролога&nbsp;&mdash; Мары Борониной
+        section.header__bottomSection
+          h1.h1.header__h1 Пробудите свои <span class="text_color_yellow">сверхспособности</span>
+          hr.hr.header__hr
+          h4.h4.header__h4
+            | Как <span class="text_bold">ВСЕГО ЗА&nbsp;3&nbsp;ВЕЧЕРА</span>
+            | выявить и&nbsp;раскрыть свой <span class="text_bold">ВРОЖДЁННЫЙ
+            | <br class="header__h4-br"> ПОТЕНЦИАЛ,</span> чтобы:
+          div.header__blanksArea.container 
+            div.header__mystic-constellation-1
+              img(src="./images/mystic-constellation-1.svg" alt="mystic-constellation-1.svg")
+            div.header__mystic-constellation-2
+              img(src="./images/mystic-constellation-2.svg" alt="mystic-constellation-2.svg")
+            div.row.justify-content-center.align-items-end
+              div.blank.header__blank.col-md-6.col-xl-4    
+                div.circle.blank__circle
+                  img.circle__star(src="./images/star.svg" alt="star.svg")
+                div.blank__inner
+                  article.blank__article
+                    h6.h6.blank__h6 научиться считывать информацию о&nbsp;прошлом, настоящем и&nbsp;будущем
+                  // 
+                     <div class="header__mystic-constellation-1">
+                      <img class="mystic-constellation-1" src="./images/mystic-constellation-1.svg" alt="mystic-constellation-1.svg">
+                     </div>
+              div.blank.header__blank.col-md-6.col-xl-4    
+                div.circle.blank__circle
+                  img.circle__star(src="./images/star.svg" alt="star.svg")
+                div.blank__inner
+                  article.blank__article
+                    h6.h6.blank__h6 уметь мгновенно повышать уровень энергии и&nbsp;самостоятельно восстанавливать здоровье    
+              div.blank.header__blank.col-md-6.col-xl-4    
+                div.circle.blank__circle
+                  img.circle__star(src="./images/star.svg" alt="star.svg")
+                div.blank__inner
+                  article.blank__article
+                    h6.h6.blank__h6 начать притягивать в&nbsp;свою жизнь нужные события, людей и&nbsp;большие деньги                 
+          div.header__timeAndPlace
+            div.header__timeAndPlace-iconBlock
+              img.timeAndPlace__icon(src="./images/timeAndPlace.svg" alt="timeAndPlace.svg")
+            arcticle.header__timeAndPlace-article
+              h5.h5.text_bold.header__timeAndPlace-h5. 
+                <span class="text_color_yellow">21-23 сентября в&nbsp;15:00&nbsp;МСК&nbsp;</span>| 
+                <br class="header__timeAndPlace-br"/>
+                Формат: онлайн по&nbsp;всему миру
+          form.header__form(action="sendInvite")
+            div.header__form-topBlock
+              input.input.header__form-input(type="email" name="email" placeholder="Введите ваш e-mail")
+              button.button.header__form-button(type="submit") Участвовать бесплатно!
+            p.p.header__form-p Согласен получать письма от&nbsp;&laquo;Люмос&nbsp;22&raquo;
+          div.header__offer
+            div.header__offer-iconBlock
+              img.header__offer-icon(src="./images/offer-icon.svg" alt="offer-icon.svg")
+            article.header__offer-article
+              h6.header__offer-text
+                | Сразу после подписки вы&nbsp;получите тест-диагностику на&nbsp;
+                | <br class="header__offer-br">
+                | определение ваших сверхспособностей!
+          // 
+            <div class="header__mystic-constellation-1">
+              <img class="mystic-constellation-1" src="./images/mystic-constellation-1.svg" alt="mystic-constellation-1.svg">
+            </div>
+      main main
+      footer footer
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
