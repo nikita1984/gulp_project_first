@@ -10,19 +10,30 @@ const browserSync = require('browser-sync').create();
 function views() {
     return src('./app/views/*.pug')
         .pipe(pug({pretty:true}))
-        .pipe(dest('./dist/'))
-        .pipe(browserSync.stream());
+        .pipe(dest('./app/'));
+        // .pipe(browserSync.stream());
 }
 function preprocessing () {
     return src('./app/sass/*.sass')
       .pipe(sass().on('error', sass.logError))
-      .pipe(dest('./dist/css'))
-      .pipe(browserSync.stream());
+      .pipe(dest('./app/css'));
+      // .pipe(browserSync.stream());
       /* выражение аналогично pipe(browserSync.stream())
       .pipe(browserSync.reload({
         stream: true
       }));
       */
+}
+function htmlTransfer () {
+    return src('./app/index.html')
+    .pipe(dest('./dist/'))
+    .pipe(browserSync.stream());
+}
+
+function cssTransfer () {
+    return src('./app/css/*.css')
+    .pipe(dest('./dist/css/'))
+    .pipe(browserSync.stream());
 }
 
 function browserInit () {
@@ -33,7 +44,9 @@ function browserInit () {
         });
 
     watch('./app/sass/*.sass', preprocessing);
-    watch('./app/views/*.pug', views);    
+    watch('./app/views/*.pug', views);
+    watch('./app/index.html', htmlTransfer);
+    watch('./app/css/*.css', cssTransfer);        
 }
 
-exports.browserInit = browserInit; 
+exports.default = browserInit; 
