@@ -8,6 +8,7 @@ const browserSync = require('browser-sync').create();
 const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
 const gulpIf = require('gulp-if');
+const cssnano = require('gulp-cssnano');
 
 // декларируем задачи
 function views() {
@@ -37,17 +38,18 @@ function htmlTransfer () {
     .pipe(browserSync.stream());
 }
 
-function cssTransfer () {
-    return src('./app/css/*.css')
-    .pipe(dest('./dist/css/'))
-    .pipe(browserSync.stream());
-}
+// function cssTransfer () {
+//     return src('./app/css/*.css')
+//     .pipe(dest('./dist/css/'))
+//     .pipe(browserSync.stream());
+// }
 
 function userefFunction () {
     return src('./app/index.html')
     .pipe(useref())
     .pipe(dest('./dist/'))
     .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulpIf('*.css', cssnano()))
     .pipe(browserSync.stream());
 }
 
@@ -69,7 +71,7 @@ function browserInit () {
     watch('./app/sass/*.sass', preprocessing);
     watch('./app/views/*.pug', views);
     watch('./app/index.html', userefFunction);
-    watch('./app/css/*.css', cssTransfer);
+    watch('./app/css/**.css', userefFunction);
     watch('./app/js/**/*.js', userefFunction);          
 }
 
