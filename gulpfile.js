@@ -9,7 +9,8 @@ const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
 const gulpIf = require('gulp-if');
 const cssnano = require('gulp-cssnano');
-// const imagemin = require('gulp-tinypng-compress');
+const del = require('del');
+// const tinypng = require('gulp-tinypng-compress');
 
 // декларируем задачи
 function views() {
@@ -23,11 +24,10 @@ function preprocessing () {
       .pipe(dest('./app/css'));
 }
 
-// function imageTreatment () {
-//     return src('./app/images/**/*.+(png|jpg|gif|svg)')
-//         .pipe(imagemin())
-//         .pipe(gulp.dest('dist/images'));
-// }
+function imageTreatment () {
+    return src('./app/images/**/*.+(jpg|svg|png|gif)')
+        .pipe(dest('./dist/images'));    
+}
 
 function userefFunction () {
     return src('./app/index.html')
@@ -43,6 +43,10 @@ function fonts () {
     .pipe(dest('./dist/fonts'))
 }
 
+async function cleanDist () {
+    await del('dist');
+}
+
 function browserInit () {
     browserSync.init({
         server: {
@@ -56,8 +60,13 @@ function browserInit () {
     watch('./app/css/**.css', userefFunction);
     watch('./app/js/**/*.js', userefFunction);
     watch('./app/fonts/**/*', fonts);
-    // watch('./app/images/**/*.+(png|jpg|gif|svg)', imageTreatment);
+    // watch('./app/images/**/*.+(jpg|svg|png|gif)', imageTreatment);
 }
 
-exports.default = browserInit; 
-exports.test = fonts;
+exports.default = series(cleanDist,
+                        views,
+                        preprocessing,
+                        fonts,
+                        imageTreatment,
+                        userefFunction, 
+                        browserInit);
