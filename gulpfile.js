@@ -9,39 +9,24 @@ const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
 const gulpIf = require('gulp-if');
 const cssnano = require('gulp-cssnano');
+// const imagemin = require('gulp-tinypng-compress');
 
 // декларируем задачи
 function views() {
     return src('./app/views/*.pug')
         .pipe(pug({pretty:true}))
         .pipe(dest('./app/'));
-        // .pipe(browserSync.stream());
 }
 function preprocessing () {
     return src('./app/sass/*.sass')
       .pipe(sass().on('error', sass.logError))
       .pipe(dest('./app/css'));
-      // .pipe(browserSync.stream());
-      /* выражение аналогично pipe(browserSync.stream())
-      .pipe(browserSync.reload({
-        stream: true
-      }));
-      */
-}
-function htmlTransfer () {
-    // return src('./app/index.html')
-    // .pipe(dest('./dist/'))
-    // .pipe(browserSync.stream());
-    return src('./app/index.html')
-    .pipe(useref())
-    .pipe(dest('./dist/'))
-    .pipe(browserSync.stream());
 }
 
-// function cssTransfer () {
-//     return src('./app/css/*.css')
-//     .pipe(dest('./dist/css/'))
-//     .pipe(browserSync.stream());
+// function imageTreatment () {
+//     return src('./app/images/**/*.+(png|jpg|gif|svg)')
+//         .pipe(imagemin())
+//         .pipe(gulp.dest('dist/images'));
 // }
 
 function userefFunction () {
@@ -53,13 +38,10 @@ function userefFunction () {
     .pipe(browserSync.stream());
 }
 
-/*
-function jsTransfer () {
-    return src('./app/js/*.js')
-    .pipe(dest('./dist/js/'))
-    .pipe(browserSync.stream());
+function fonts () {
+    return src('./app/fonts/**/*')
+    .pipe(dest('./dist/fonts'))
 }
-*/
 
 function browserInit () {
     browserSync.init({
@@ -72,8 +54,10 @@ function browserInit () {
     watch('./app/views/*.pug', views);
     watch('./app/index.html', userefFunction);
     watch('./app/css/**.css', userefFunction);
-    watch('./app/js/**/*.js', userefFunction);          
+    watch('./app/js/**/*.js', userefFunction);
+    watch('./app/fonts/**/*', fonts);
+    // watch('./app/images/**/*.+(png|jpg|gif|svg)', imageTreatment);
 }
 
 exports.default = browserInit; 
-// exports.useref = userefFunction;
+exports.test = fonts;
