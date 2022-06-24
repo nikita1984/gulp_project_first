@@ -10,6 +10,7 @@ const uglify = require('gulp-uglify');
 const gulpIf = require('gulp-if');
 const cssnano = require('gulp-cssnano');
 const del = require('del');
+const autoprefixer = require('gulp-autoprefixer');
 // const tinypng = require('gulp-tinypng-compress');
 
 // декларируем задачи
@@ -21,6 +22,7 @@ function views() {
 function preprocessing () {
     return src('./app/sass/*.sass')
       .pipe(sass().on('error', sass.logError))
+      .pipe(autoprefixer({cascade: false}))
       .pipe(dest('./app/css'));
 }
 

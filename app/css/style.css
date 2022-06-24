@@ -237,6 +237,11 @@ body {
   padding: 8%;
   font-size: 1.8rem;
 }
+.input::-moz-placeholder {
+  color: #1f1a1a;
+  text-align: center;
+  font-size: 1.8rem;
+}
 .input::placeholder {
   color: #1f1a1a;
   text-align: center;
