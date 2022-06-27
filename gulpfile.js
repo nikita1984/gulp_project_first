@@ -12,16 +12,19 @@ const cssnano = require('gulp-cssnano');
 const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 const htmlmin = require('gulp-htmlmin');
+const changed = require('gulp-changed');
 // const tinypng = require('gulp-tinypng-compress');
 
 // декларируем задачи
 function views() {
     return src('./app/views/*.pug')
+        .pipe(changed('./dist/', {extension: '.pug'}))
         .pipe(pug({pretty:true}))
         .pipe(dest('./app/'));
 }
 function preprocessing () {
     return src('./app/sass/*.sass')
+      .pipe(changed('./app/', {extension: '.sass'}))  
       .pipe(sass().on('error', sass.logError))
       .pipe(autoprefixer({cascade: false}))
       .pipe(dest('./app/css'));
@@ -34,6 +37,9 @@ function imageTreatment () {
 
 function userefFunction () {
     return src('./app/index.html')
+        .pipe(changed('./dist/', {extension: '.js'}))
+        .pipe(changed('./dist/', {extension: '.css'}))
+        // .pipe(changed('./dist/', {extension: '.html'}))
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulpIf('*.css', cssnano()))
@@ -53,9 +59,7 @@ async function cleanDist () {
 
 function browserInit () {
     browserSync.init({
-        server: {
-            baseDir: 'dist'
-        },
+        server: { baseDir: 'dist' },
         });
 
     watch('./app/sass/*.sass', preprocessing);
