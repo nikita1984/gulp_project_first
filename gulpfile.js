@@ -13,7 +13,8 @@ const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 const htmlmin = require('gulp-htmlmin');
 const changed = require('gulp-changed');
-// const tinypng = require('gulp-tinypng-compress');
+const tinypng = require('gulp-tinypng-compress');
+const cache = require('gulp-cache');
 
 // декларируем задачи
 function views() {
@@ -31,7 +32,17 @@ function preprocessing () {
 }
 
 function imageTreatment () {
-    return src('./app/images/**/*.+(jpg|svg|png|gif)')
+    return src('./app/images/**/*.+(svg|gif)')
+        .pipe(dest('./dist/images'));    
+}
+
+function imageCompress () {
+    return src('./app/images/**/*.+(jpg|png|jpeg)')
+        .pipe(cache(tinypng({
+            key: 'vf9y2BXWjtrR4q9KYClwYp1hnMHYtqJj',
+            sigFile: './app/images/.tinypng-sigs',
+            log: true
+        })))
         .pipe(dest('./dist/images'));    
 }
 
@@ -39,7 +50,6 @@ function userefFunction () {
     return src('./app/index.html')
         .pipe(changed('./dist/', {extension: '.js'}))
         .pipe(changed('./dist/', {extension: '.css'}))
-        // .pipe(changed('./dist/', {extension: '.html'}))
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulpIf('*.css', cssnano()))
@@ -57,6 +67,10 @@ async function cleanDist () {
     await del('dist');
 }
 
+async function cacheClear () {
+    await cache.clearAll();
+}
+
 function browserInit () {
     browserSync.init({
         server: { baseDir: 'dist' },
@@ -68,7 +82,8 @@ function browserInit () {
     watch('./app/css/**.css', userefFunction);
     watch('./app/js/**/*.js', userefFunction);
     watch('./app/fonts/**/*', fonts);
-    watch('./app/images/**/*.+(jpg|svg|png|gif)', imageTreatment);
+    watch('./app/images/**/*.+(svg|gif)', imageTreatment);
+    watch('./app/images/**/*.+(jpg|png|jpeg)', imageCompress);
 }
 
 exports.default = series(cleanDist,
@@ -76,5 +91,8 @@ exports.default = series(cleanDist,
                         preprocessing,
                         fonts,
                         imageTreatment,
+                        imageCompress,
                         userefFunction, 
                         browserInit);
+
+exports.clear = cacheClear;                        
