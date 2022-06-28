@@ -1,3 +1,10 @@
 .h1 {
   color: red;
+  -moz-color: blue;
+}
+
+@-moz-document url-prefix() {
+  .h1 {
+    color: blue;
+  }
 }

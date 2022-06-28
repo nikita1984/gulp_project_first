@@ -37,28 +37,16 @@ html(lang="ru")
             div.header__mystic-constellation-2
               img(src="./images/mystic-constellation-2.svg" alt="mystic-constellation-2.svg")
             div.row.justify-content-center.align-items-end
-              div.blank.header__blank.col-md-6.col-xl-4    
-                div.circle.blank__circle
-                  img.circle__star(src="./images/star.svg" alt="star.svg")
-                div.blank__inner
-                  article.blank__article
-                    h6.h6.blank__h6 научиться считывать информацию о&nbsp;прошлом, настоящем и&nbsp;будущем
-                  // 
-                     <div class="header__mystic-constellation-1">
-                      <img class="mystic-constellation-1" src="./images/mystic-constellation-1.svg" alt="mystic-constellation-1.svg">
-                     </div>
-              div.blank.header__blank.col-md-6.col-xl-4    
-                div.circle.blank__circle
-                  img.circle__star(src="./images/star.svg" alt="star.svg")
-                div.blank__inner
-                  article.blank__article
-                    h6.h6.blank__h6 уметь мгновенно повышать уровень энергии и&nbsp;самостоятельно восстанавливать здоровье    
-              div.blank.header__blank.col-md-6.col-xl-4    
-                div.circle.blank__circle
-                  img.circle__star(src="./images/star.svg" alt="star.svg")
-                div.blank__inner
-                  article.blank__article
-                    h6.h6.blank__h6 начать притягивать в&nbsp;свою жизнь нужные события, людей и&nbsp;большие деньги                 
+              - var text_1 = 'научиться считывать информацию о прошлом, настоящем и будущем'
+              - var text_2 = 'уметь мгновенно повышать уровень энергии и самостоятельно восстанавливать здоровье'
+              - var text_3 = 'начать притягивать в свою жизнь нужные события, людей и большие деньги'
+              each val in [text_1, text_2, text_3]
+                div.blank.header__blank.col-md-6.col-xl-4    
+                    div.circle.blank__circle
+                      img.circle__star(src="./images/star.svg" alt="star.svg")
+                    div.blank__inner
+                      article.blank__article
+                        h6.h6.blank__h6= val
           div.header__timeAndPlace
             div.header__timeAndPlace-iconBlock
               img.timeAndPlace__icon(src="./images/timeAndPlace.svg" alt="timeAndPlace.svg")
