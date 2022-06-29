@@ -645,3 +645,12 @@ body {
     left: 86%;
   }
 }
+
+@-moz-document url-prefix() {
+  .h1 {
+    color: blue;
+  }
+  html {
+    font-size: 60%;
+  }
+}
